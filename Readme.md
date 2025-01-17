@@ -5,3 +5,5 @@
 
 2. Run the application by starting the docker container. <br />
 `docker run -p 8080:8080 receipt-points-processor.jar`
+
+3. Execute POST and GET requests on http://localhost:8080
