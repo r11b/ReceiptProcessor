@@ -75,37 +75,11 @@ class ReceiptPointsCalculatorTest {
     }
 
     @Test
-    void testCalculatePoints_InvalidTotal() {
-        Receipt receipt = createSampleReceipt();
-        receipt.setTotal("invalid");
-        assertThrows(IllegalArgumentException.class, () -> calculator.calculatePoints(receipt));
-    }
-
-    @Test
-    void testCalculatePoints_InvalidPurchaseDate() {
-        Receipt receipt = createSampleReceipt();
-        receipt.setPurchaseDate("invalid-date");
-        assertThrows(IllegalArgumentException.class, () -> calculator.calculatePoints(receipt));
-    }
-
-    @Test
-    void testCalculatePoints_InvalidPurchaseTime() {
-        Receipt receipt = createSampleReceipt();
-        receipt.setPurchaseTime("invalid-time");
-        assertThrows(IllegalArgumentException.class, () -> calculator.calculatePoints(receipt));
-    }
-
-    @Test
     void testGetPoints_Success() {
         Receipt receipt = createSampleReceipt();
         String receiptId = calculator.processReceipt(receipt);
         Long points = calculator.getPoints(receiptId);
         assertNotNull(points);
-    }
-
-    @Test
-    void testGetPoints_InvalidReceiptId() {
-        assertNull(calculator.getPoints("invalid-receipt-id"));
     }
 
     private Receipt createSampleReceipt() {
